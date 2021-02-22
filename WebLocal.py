@@ -216,6 +216,34 @@ def choice_name(name):
                             </html>'''
 
 
+@app.route('/results/<nickname>/<level>/<rating>')
+def results(nickname, level, rating):
+    try:
+        nickname = str(nickname)
+        level = int(level)
+        rating = float(rating)
+    except Exception:
+        return 'Ошибка'
+    text = [f'Поздравляем! Ваш рейтинг после {level} этапа отбора', f'составляет {rating}!', 'Желаем удачи!']
+    return f'''<!doctype html>
+                    <html lang="en">
+                      <head>
+                        <meta charset="utf-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                        <link rel="stylesheet" 
+                        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" 
+                        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" 
+                        crossorigin="anonymous">
+                        <title>Результаты отбора</title>
+                      </head>
+                      <body>
+                        <h1>Результаты отбора</h1>
+                        <h2>Претендента на участие в миссии {nickname}:</h1>
+                        {create_info(text)}
+                      </body>
+                    </html>'''
+
+
 def create_info(planets):
     container = ''
     color = ['dark', 'success', 'info', 'danger', 'warning', 'primary']
@@ -225,4 +253,4 @@ def create_info(planets):
 
 
 if __name__ == '__main__':
-    app.run(port=666, host='127.0.0.1')
+    app.run(port=8080, host='127.0.0.1')
