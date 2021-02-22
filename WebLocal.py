@@ -20,7 +20,7 @@ def promotion():
 
 @app.route('/image_mars')
 def mars_img():
-    return '<h1>Жди нас, Марс!<h1><img src="/static/img/mars.jpg" alt="!!!ТУТ ФОТО!!!" />'
+    return '<h1 class="h1_image_mars">Жди нас, Марс!<h1><img src="/static/img/mars.jpg" alt="!!!ТУТ ФОТО!!!" />'
 
 
 @app.route('/promotion_image')
@@ -32,7 +32,7 @@ def promotion_image():
                     <title>Привет, Яндекс!</title>
                   </head>
                   <body>
-                    <h1>Жди нас, Марс!</h1>
+                    <h1 class="h1_image_mars">Жди нас, Марс!<h1>
                     <img src="/static/img/mars.jpg" alt="!!!ТУТ ФОТО!!!" />
                     <div class="block1">
                         Человечество вырастает из детства.
@@ -62,31 +62,62 @@ def astronaut_selection():
                                 <meta charset="utf-8">
                                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
                                 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
-                                <title>Пример формы</title>
+                                <title>Анкета</title>
                               </head>
                               <body>
-                                <h1>Форма для регистрации в суперсекретной системе</h1>
+                                <h1 class="h">Анкета претендента</h1>
+                                <h2 class="h">на участие в мисси</h2>
                                 <div>
                                     <form class="login_form" method="post">
+                                        <input type="text" class="form-control" id="surname" aria-describedby="emailHelp" placeholder="Введите фамилию" name="surname">
+                                        <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Введите имя" name="name">
                                         <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Введите адрес почты" name="email">
-                                        <input type="password" class="form-control" id="password" placeholder="Введите пароль" name="password">
                                         <div class="form-group">
-                                            <label for="classSelect">В каком вы классе</label>
+                                            <label for="classSelect">Какое у Вас образование?</label>
                                             <select class="form-control" id="classSelect" name="class">
-                                              <option>7</option>
-                                              <option>8</option>
-                                              <option>9</option>
-                                              <option>10</option>
-                                              <option>11</option>
+                                              <option>Начальное</option>
+                                              <option>Среднее</option>
+                                              <option>Среднее специальное</option>
+                                              <option>Бакалавр</option>
+                                              <option>Магистр</option>
+                                              <option>Специалитет</option>
+                                              <option>Доктор наук</option>
                                             </select>
                                          </div>
                                         <div class="form-group">
-                                            <label for="about">Немного о себе</label>
-                                            <textarea class="form-control" id="about" rows="3" name="about"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="photo">Приложите фотографию</label>
-                                            <input type="file" class="form-control-file" id="photo" name="file">
+                                            <label for="acceptRules">Какое у Вас образование?</label>
+                                            <div class="check">
+                                                <input type="checkbox" class="form-check-input" id="acceptRules" name="accept">
+                                                <label class="form-check-label" for="acceptRules">Инженер-исследователь</label>
+                                            </div>
+                                            <div class="check">
+                                                <input type="checkbox" class="form-check-input" id="acceptRules" name="accept">
+                                                <label class="form-check-label" for="acceptRules">Инженер-строитель</label>
+                                            </div>
+                                            <div class="check">
+                                                <input type="checkbox" class="form-check-input" id="acceptRules" name="accept">
+                                                <label class="form-check-label" for="acceptRules">Пилот</label>
+                                            </div>
+                                            <div class="check">
+                                                <input type="checkbox" class="form-check-input" id="acceptRules" name="accept">
+                                                <label class="form-check-label" for="acceptRules">Метеоролог</label>
+                                            </div>
+                                            <div class="check">
+                                                <input type="checkbox" class="form-check-input" id="acceptRules" name="accept">
+                                                <label class="form-check-label" for="acceptRules">Инженер по жизнеобеспечению</label>
+                                            </div>
+                                            <div class="check">
+                                                <input type="checkbox" class="form-check-input" id="acceptRules" name="accept">
+                                                <label class="form-check-label" for="acceptRules">Инженер по радиационной защите</label>
+                                            </div>
+                                            <div class="check">
+                                                <input type="checkbox" class="form-check-input" id="acceptRules" name="accept">
+                                                <label class="form-check-label" for="acceptRules">Врач</label>
+                                            </div>
+                                            <div class="check">
+                                                <input type="checkbox" class="form-check-input" id="acceptRules" name="accept">
+                                                <label class="form-check-label" for="acceptRules">Экзобиолог</label>
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="form-check">Укажите пол</label>
@@ -103,23 +134,33 @@ def astronaut_selection():
                                               </label>
                                             </div>
                                         </div>
-                                        <div class="form-group form-check">
-                                            <input type="checkbox" class="form-check-input" id="acceptRules" name="accept">
-                                            <label class="form-check-label" for="acceptRules">Готов быть добровольцем</label>
+                                        <div class="form-group">
+                                            <label for="about">Почему Вы хотите принять участие в миссии?</label>
+                                            <textarea class="form-control" id="about" rows="3" name="about" style="max-width: 445px;"></textarea>
                                         </div>
-                                        <button type="submit" class="btn btn-primary">Записаться</button>
+                                        <div class="form-group">
+                                            <label for="photo">Приложите фотографию</label>
+                                            <input type="file" class="form-control-file" id="photo" name="file" style="display: block; margin-bottom: 10px";
+                                        </div>
+                                        <div class="form-group form-check" style="display: block; margin-bottom: 10px">
+                                            <input type="checkbox" class="form-check-input" id="acceptRules" name="answer">
+                                            <label class="form-check-label" for="acceptRules">Готовы остаться на Марсе?</label>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Отправить</button>
                                     </form>
                                 </div>
                               </body>
                             </html>'''
     elif request.method == 'POST':
+        print(request.form['surname'])
+        print(request.form['name'])
         print(request.form['email'])
-        print(request.form['password'])
         print(request.form['class'])
-        print(request.form['file'])
-        print(request.form['about'])
         print(request.form['accept'])
         print(request.form['sex'])
+        print(request.form['about'])
+        print(request.form['file'])
+        print(request.form['answer'])
         return "Форма отправлена"
 
 
