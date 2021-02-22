@@ -20,7 +20,7 @@ def promotion():
 
 @app.route('/image_mars')
 def mars_img():
-    return '<h1>Жди нас, Марс!<h1><img src="/static/img/mars.jpg" alt="!!!ТУТ ФОТО!!!">'
+    return '<h1>Жди нас, Марс!<h1><img src="/static/img/mars.jpg" alt="!!!ТУТ ФОТО!!!" />'
 
 
 @app.route('/promotion_image')
@@ -33,7 +33,7 @@ def promotion_image():
                   </head>
                   <body>
                     <h1>Жди нас, Марс!</h1>
-                    <img src="/static/img/mars.jpg" alt="!!!ТУТ ФОТО!!!">
+                    <img src="/static/img/mars.jpg" alt="!!!ТУТ ФОТО!!!" />
                     <div class="block1">
                         Человечество вырастает из детства.
                     </div>
@@ -124,4 +124,4 @@ def astronaut_selection():
 
 
 if __name__ == '__main__':
-    app.run(port=8000, host='127.0.0.1')
+    app.run(port=666, host='127.0.0.1')

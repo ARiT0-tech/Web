@@ -1,3 +1,10 @@
+h1 {color:red;}
+.block1 {
+    width: 801px;
+    background: #0000ff;
+    padding-top: 20px;
+    font-size: 25px;
+}
 .block2 {
     width: 801px;
     background: #008000;
