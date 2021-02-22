@@ -1,4 +1,5 @@
 from flask import Flask, request
+import random
 
 app = Flask(__name__)
 
@@ -85,7 +86,7 @@ def astronaut_selection():
                                             </select>
                                          </div>
                                         <div class="form-group">
-                                            <label for="acceptRules">Какое у Вас образование?</label>
+                                            <label for="acceptRules">Какие у Вас есть профессии?</label>
                                             <div class="check">
                                                 <input type="checkbox" class="form-check-input" id="acceptRules" name="accept">
                                                 <label class="form-check-label" for="acceptRules">Инженер-исследователь</label>
@@ -162,6 +163,65 @@ def astronaut_selection():
         print(request.form['file'])
         print(request.form['answer'])
         return "Форма отправлена"
+
+
+@app.route('/choice/<name>')
+def choice_name(name):
+    planets = {
+        'марс': ['Эта планета близка к Земле;', 'На ней много необходимых ресурсов;', 'На ней есть вода и атмосфера;',
+                 'На ней есть небольшое магнитное поле;', 'Наконец, она просто красива!'],
+        'земля': ['Мы как бы тут уже живём...', '........', '...'],
+        'меркурий': ['Является ближайшей планетой к Солнцу;', 'У планеты нет спутников;',
+                     'Является наименьшей планетой системы;', 'Меркурий имеет крайне разреженную атмосферу.'],
+        'венера': ['Венера близка по размеру к Земле;',
+                   'Имеет толстую силикатную оболочку вокруг железного ядра и атмосферу;',
+                   'Количество воды на Венере гораздо меньше земного, а её атмосфера в 90 раз плотнее;',
+                   'Температура поверхности Венеры превышает 400 °C.'],
+        'юпитер': ['Юпитер обладает массой в 318 раз больше земной;', 'Он состоит главным образом из водорода и гелия;',
+                   'Высокая внутренняя температура Юпитера вызывает множество полупостоянных вихревых структур в его атмосфере.'],
+        'сатурн': ['Сатурн, известный своей обширной системой колец;',
+                   'Имеет несколько схожие с Юпитером структуру атмосферы и магнитосферы;',
+                   'Сатурн — наименее плотная планета Солнечной системы.'],
+        'уран': ['Уран имеет массу в 14 раз больше, чем Земля;',
+                 'Уникальным среди других планет его делает то, что он вращается «лёжа на боку»;',
+                 'Если другие планеты можно сравнить с вращающимися волчками, то Уран больше похож на катящийся шар;',
+                 'Он имеет намного более холодное ядро, чем другие газовые гиганты, и излучает в космос очень мало тепла.']}
+    if name.lower() in planets:
+        return f'''<!doctype html>
+                    <html lang="en">
+                      <head>
+                        <meta charset="utf-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                        <link rel="stylesheet" 
+                        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" 
+                        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" 
+                        crossorigin="anonymous">
+                        <title>{name}</title>
+                      </head>
+                      <body>
+                        <h1>Мое предложение: {name}</h1>
+                        {create_info(planets[name.lower()])}
+                      </body>
+                    </html>'''
+    else:
+        return f'''<!doctype html>
+                            <html lang="en">
+                              <head>
+                                <title>Каво?</title>
+                              </head>
+                              <body>
+                                <h1>Мое предложение: {name}</h1>
+                                <p>А это где?</p>
+                              </body>
+                            </html>'''
+
+
+def create_info(planets):
+    container = ''
+    color = ['dark', 'success', 'info', 'danger', 'warning', 'primary']
+    for planet in planets:
+        container += f'<div class="alert alert-{random.choice(color)}" role="alert">{planet}</div> '
+    return container
 
 
 if __name__ == '__main__':
