@@ -1,33 +1,3 @@
-.block1 {
-    width: 801px;
-    background: #0000ff;
-    padding-top: 20px;
-    font-size: 25px;
-}
-.block2 {
-    width: 801px;
-    background: #008000;
-    padding-top: 20px;
-    font-size: 25px;
-   }
-.block3 {
-    width: 801px;
-    background: #e6e6e6;
-    padding-top: 20px;
-    font-size: 25px;
-}
-.block4 {
-    width: 801px;
-    background: #ffff66;
-    padding-top: 20px;
-    font-size: 25px;
-   }
-.block5 {
-    width: 801px;
-    background: #ff3333;
-    padding-top: 20px;
-    font-size: 25px;
-   }
 form.login_form {
     margin-left: auto;
     margin-right: auto;
@@ -41,3 +11,5 @@ form.login_form {
 .check {margin-bottom: 10px; display: block;}
 .h1_image_mars {color:red;}
 .h {text-align: center;}
+
+
