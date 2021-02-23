@@ -63,7 +63,7 @@ def promotion_image():
                     </html>'''
 
 
-@app.route('/astronaut_selection')
+@app.route('/astronaut_selection', methods=['POST', 'GET'])
 def astronaut_selection():
     if request.method == 'GET':
         return f'''<!doctype html>
